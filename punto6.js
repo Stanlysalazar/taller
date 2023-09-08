@@ -22,13 +22,13 @@ function encontrarEdadMayorYContarRepeticiones(edade, codigo) {
     return `La edad mayor es ${edadMayor}, y se repite ${repeticionesEdadMayor} veces.`;
 }
 
-// Generar 20 edades y 20 códigos aleatorios
+
 const edade = [];
 const codigo = [];
 
 for (let i = 0; i < 20; i++) {
-    edades.push(generarNumeroAleatorio(1, 100)); // Edades entre 1 y 100
-    codigo.push(generarNumeroAleatorio(1, 100)); // Códigos entre 1 y 1000
+    edades.push(generarNumeroAleatorio(1, 100));
+    codigo.push(generarNumeroAleatorio(1, 100)); 
 }
 
 console.log("Edades generadas aleatoriamente:", edade);
@@ -36,6 +36,8 @@ console.log("Códigos generados aleatoriamente:", codigo);
 
 const resultados = encontrarEdadMayorYContarRepeticiones(edade, codigo);
 console.log(resultados);
+
+
 
 
 //funcion de flecha

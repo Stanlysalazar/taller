@@ -17,14 +17,14 @@ calcularTemperaturaLuna(28, 14);
 
 
 //funcion de flecha
-const calcularTemperaturaMedia = (temperaturaMaxima, temperaturaMinima) => {
-    const temperaturaMedia = (temperaturaMaxima + temperaturaMinima) / 2;
-    return temperaturaMedia;
-};
+// const calcularTemperaturaMedia = (temperaturaMaxima, temperaturaMinima) => {
+//     const temperaturaMedia = (temperaturaMaxima + temperaturaMinima) / 2;
+//     return temperaturaMedia;
+// };
 
-// Ejemplo de uso
-const temperaturaMaxima = 28; 
-const temperaturaMinima = 14; 
+// // Ejemplo de uso
+// const temperaturaMaxima = 28; 
+// const temperaturaMinima = 14; 
 
-const temperaturaMedia = calcularTemperaturaMedia(temperaturaMaxima, temperaturaMinima);
-console.log(`La temperatura media es: ${temperaturaMedia} grados Celsius`);
+// const temperaturaMedia = calcularTemperaturaMedia(temperaturaMaxima, temperaturaMinima);
+// console.log(`La temperatura media es: ${temperaturaMedia} grados Celsius`);

@@ -1,121 +1,88 @@
-
-// Función para generar un número aleatorio entre un rango dado
-// const generarNumeroAleatorio = (min, max) => Math.random() * (max - min) + min;
-
-// // Función para generar datos aleatorios de un planeta
-// const generarPlanetaAleatorio = () => {
-//     const nombrePlaneta = "Planeta " + Math.floor(Math.random() * 1000);
-//     const latitud = generarNumeroAleatorio(-90, 90);
-//     const longitud = generarNumeroAleatorio(-180, 180);
-//     const nivelOxigeno = generarNumeroAleatorio(-10, 30);
-//     const volumenAgua = generarNumeroAleatorio(0, 5000);
+// Definir una lista de planetas con su información
+const planetas = [
+    { nombrePlaneta: "Tatooine", latitud: 23.456, longitud: -45.789, oxigeno: 15, agua: 500 },
+    { nombrePlaneta: "Alderaan", latitud: -12.345, longitud: 67.890, oxigeno: 35, agua: 800 },
+    { nombrePlaneta: "Hoth", latitud: 45.678, longitud: -12.345, oxigeno: -5, agua: 0 },
+    // Agregar los datos de los otros planetas aquí
+  ];
+  
+  // Inicializar variables para las sumas
+  let totalAgua = 0;
+  let totalOxigeno = 0;
+  
+  // Inicializar variables para almacenar información de planetas especiales
+  let planetaConOxigenoNegativo = null;
+  let planetaSinAgua = null;
+  
+  // Iterar a través de la lista de planetas
+  for (const planeta of planetas) {
+    // Sumar la cantidad total de agua de los planetas
+    totalAgua += planeta.agua;
+  
+    // Sumar el oxígeno y multiplicar por 100
+    totalOxigeno += planeta.oxigeno * 100;
+  
+    // Verificar si el planeta tiene oxígeno negativo
+    if (planeta.oxigeno < 0) {
+      planetaConOxigenoNegativo = planeta;
+    }
+  
+    // Verificar si el planeta no tiene agua
+    if (planeta.agua === 0) {
+      planetaSinAgua = planeta;
+    }
+  }
+  
+  // Imprimir los resultados
+  console.log(`Total de agua en los 15 planetas: ${totalAgua} unidades`);
+  console.log(`Total de oxígeno en los 15 planetas multiplicado por 100: ${totalOxigeno} unidades`);
+  
+  if (planetaConOxigenoNegativo) {
+    console.log(`Planeta con oxígeno negativo: ${planetaConOxigenoNegativo.nombrePlaneta}`);
+  }
+  
+  if (planetaSinAgua) {
+    console.log(`Planeta sin agua: ${planetaSinAgua.nombrePlaneta}`);
     
-//     return {
-//         nombrePlaneta,
-//         latitud,
-//         longitud,
-//         nivelOxigeno,
-//         volumenAgua,
-//     };
-// };
-
-// // Generar automáticamente los datos de 15 planetas
-// const planetas = [];
-
-// for (let i = 0; i < 15; i++) {
-//     const planeta = generarPlanetaAleatorio();
-//     planetas.push(planeta);
-// }
-
-// // Función para sumar el total de agua de los planetas
-// const sumarTotalAgua = () => {
-//     const totalAgua = planetas.reduce((acumulador, planeta) => acumulador + planeta.volumenAgua, 0);
-//     return totalAgua;
-// };
-
-// // Función para sumar y multiplicar por 100 el total de oxigeno de los planetas
-// const calcularTotalOxigeno = () => {
-//     const totalOxigeno = planetas.reduce((acumulador, planeta) => acumulador + planeta.nivelOxigeno, 0);
-//     const totalOxigenoMultiplicado = totalOxigeno * 100;
-//     return totalOxigenoMultiplicado;
-// };
-
-// // Función para encontrar planetas con nivel de oxígeno negativo y sin agua
-// const encontrarPlanetasProblematicos = () => {
-//     const planetasConOxigenoNegativo = planetas.filter(planeta => planeta.nivelOxigeno < 0);
-//     const planetasSinAgua = planetas.filter(planeta => planeta.volumenAgua === 0);
-
-//     return {
-//         planetasConOxigenoNegativo,
-//         planetasSinAgua,
-//     };
-// };
-
-// // Llamar a las funciones y mostrar los resultados
-// const totalAgua = sumarTotalAgua();
-// console.log(`La cantidad total de agua de los 15 planetas es: ${totalAgua} unidades de volumen.`);
-
-// const totalOxigenoMultiplicado = calcularTotalOxigeno();
-// console.log(`El total de oxígeno de los 15 planetas multiplicado por 100 es: ${totalOxigenoMultiplicado}`);
-
-// const planetasProblematicos = encontrarPlanetasProblematicos();
-// console.log("Planetas con nivel de oxígeno negativo:", planetasProblematicos.planetasConOxigenoNegativo);
-// console.log("Planetas sin agua:", planetasProblematicos.planetasSinAgua);
-
-
-//funcion de flecha
-// Función para generar un número aleatorio entre un rango dado
-const generarNumeroAleatorio = (min, max) => Math.random() * (max - min) + min;
-
-// Función para generar datos aleatorios de un planeta
-const generarPlanetaAleatorio = () => {
-    const nombrePlaneta = "Planeta " + Math.floor(Math.random() * 1000);
-    const latitud = generarNumeroAleatorio(-90, 90);
-    const longitud = generarNumeroAleatorio(-180, 180);
-    const nivelOxigeno = generarNumeroAleatorio(-10, 30);
-    const volumenAgua = generarNumeroAleatorio(0, 5000);
-    
-    return {
-        nombrePlaneta,
-        latitud,
-        longitud,
-        nivelOxigeno,
-        volumenAgua,
-    };
-};
-
-// Generar automáticamente los datos de 15 planetas
-const planetas = Array.from({ length: 15 }, () => generarPlanetaAleatorio());
-
-// Función para sumar el total de agua de los planetas
-const sumarTotalAgua = () => planetas.reduce((acumulador, planeta) => acumulador + planeta.volumenAgua, 0);
-
-// Función para sumar y multiplicar por 100 el total de oxigeno de los planetas
-const calcularTotalOxigeno = () => {
-    const totalOxigeno = planetas.reduce((acumulador, planeta) => acumulador + planeta.nivelOxigeno, 0);
-    return totalOxigeno * 100;
-};
-
-// Función para encontrar planetas con nivel de oxígeno negativo y sin agua
-const encontrarPlanetasProblematicos = () => ({
-    planetasConOxigenoNegativo: planetas.filter(planeta => planeta.nivelOxigeno < 0),
-    planetasSinAgua: planetas.filter(planeta => planeta.volumenAgua === 0),
-});
-
-// Llamar a las funciones y mostrar los resultados
-const totalAgua = sumarTotalAgua();
-console.log(`La cantidad total de agua de los 15 planetas es: ${totalAgua} unidades de volumen.`);
-
-const totalOxigenoMultiplicado = calcularTotalOxigeno();
-console.log(`El total de oxígeno de los 15 planetas multiplicado por 100 es: ${totalOxigenoMultiplicado}`);
-
-const planetasProblematicos = encontrarPlanetasProblematicos();
-console.log("Planetas con nivel de oxígeno negativo:", planetasProblematicos.planetasConOxigenoNegativo);
-console.log("Planetas sin agua:", planetasProblematicos.planetasSinAgua);
+  }
 
 
 
 
+  //funcion de flecha
 
-
-
+  // Definir una lista de planetas con su información
+// const planetas = [
+//     { nombrePlaneta: "Tatooine", latitud: 23.456, longitud: -45.789, oxigeno: 15, agua: 500 },
+//     { nombrePlaneta: "Alderaan", latitud: -12.345, longitud: 67.890, oxigeno: 35, agua: 800 },
+//     { nombrePlaneta: "Hoth", latitud: 45.678, longitud: -12.345, oxigeno: -5, agua: 0 },
+//     // Agregar los datos de los otros planetas aquí
+//   ];
+  
+//   // Función para calcular la cantidad total de agua en los planetas
+//   const calcularTotalAgua = () => planetas.reduce((total, planeta) => total + planeta.agua, 0);
+  
+//   // Función para calcular el total de oxígeno multiplicado por 100 en los planetas
+//   const calcularTotalOxigeno = () => planetas.reduce((total, planeta) => total + planeta.oxigeno * 100, 0);
+  
+//   // Función para encontrar un planeta con oxígeno negativo
+//   const encontrarPlanetaConOxigenoNegativo = () => planetas.find(planeta => planeta.oxigeno < 0);
+  
+//   // Función para encontrar un planeta sin agua
+//   const encontrarPlanetaSinAgua = () => planetas.find(planeta => planeta.agua === 0);
+  
+//   // Imprimir los resultados
+//   console.log(`Total de agua en los 15 planetas: ${calcularTotalAgua()} unidades`);
+//   console.log(`Total de oxígeno en los 15 planetas multiplicado por 100: ${calcularTotalOxigeno()} unidades`);
+  
+//   const planetaOxigenoNegativo = encontrarPlanetaConOxigenoNegativo();
+//   if (planetaOxigenoNegativo) {
+//     console.log(`Planeta con oxígeno negativo: ${planetaOxigenoNegativo.nombrePlaneta}`);
+//   }
+  
+//   const planetaSinAgua = encontrarPlanetaSinAgua();
+//   if (planetaSinAgua) {
+//     console.log(`Planeta sin agua: ${planetaSinAgua.nombrePlaneta}`);
+//   }
+  
+  

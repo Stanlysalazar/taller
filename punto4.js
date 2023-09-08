@@ -14,6 +14,8 @@
  const cantidadSablesDefectuosos = contarSablesNegativos(sables);
  console.log(`La cantidad de sables defectuosos con energía negativa es: ${cantidadSablesDefectuosos}`);
 
+
+ 
 //funcion de flecha
 const contarSablesNegativos = (sables1) => {
     let cantidadSablesNegativos = 0;
